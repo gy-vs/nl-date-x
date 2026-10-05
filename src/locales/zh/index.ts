@@ -70,5 +70,6 @@ export function createConfiguration(): Configuration {
         (refiner) => !(refiner instanceof ExtractTimezoneOffsetRefiner)
     );
 
+    configuration.locale = "zh";
     return configuration;
 }

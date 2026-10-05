@@ -51,7 +51,7 @@ export function createCasualConfiguration(littleEndian = true): Configuration {
  * @ignore (to be documented later)
  */
 export function createConfiguration(strictMode = true, littleEndian = true): Configuration {
-    return includeCommonConfiguration(
+    const configuration = includeCommonConfiguration(
         {
             parsers: [
                 new SlashDateFormatParser(littleEndian),
@@ -66,4 +66,6 @@ export function createConfiguration(strictMode = true, littleEndian = true): Con
         },
         strictMode
     );
+    configuration.locale = "fr";
+    return configuration;
 }

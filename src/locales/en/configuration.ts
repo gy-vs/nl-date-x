@@ -66,6 +66,7 @@ export default class ENDefaultConfiguration {
             },
             strictMode
         );
+        options.locale = littleEndian ? "en.GB" : "en";
         options.parsers.unshift(new ENYearMonthDayParser(/*strictMonthDateOrder=*/ strictMode));
 
         // These relative-dates consideration should be done before other common refiners.

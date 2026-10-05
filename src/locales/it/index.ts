@@ -78,7 +78,7 @@ export function createCasualConfiguration(littleEndian = false): Configuration {
  * @param littleEndian If format should be date-first/littleEndian (e.g. en_UK), not month-first/middleEndian (e.g. en_US)
  */
 export function createConfiguration(strictMode = true, littleEndian = false): Configuration {
-    return includeCommonConfiguration(
+    const configuration = includeCommonConfiguration(
         {
             parsers: [
                 new SlashDateFormatParser(littleEndian),
@@ -96,4 +96,6 @@ export function createConfiguration(strictMode = true, littleEndian = false): Co
         },
         strictMode
     );
+    configuration.locale = "it";
+    return configuration;
 }

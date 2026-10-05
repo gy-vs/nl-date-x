@@ -71,7 +71,7 @@ export function createCasualConfiguration(): Configuration {
  * @param strictMode If the timeunit mentioning should be strict, not casual
  */
 export function createConfiguration(strictMode = true): Configuration {
-    return includeCommonConfiguration(
+    const configuration = includeCommonConfiguration(
         {
             parsers: [
                 new SlashDateFormatParser(true),
@@ -85,4 +85,6 @@ export function createConfiguration(strictMode = true): Configuration {
         },
         strictMode
     );
+    configuration.locale = "ru";
+    return configuration;
 }

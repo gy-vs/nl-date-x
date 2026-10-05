@@ -2,9 +2,11 @@ import * as en from "./locales/en";
 import { Chrono, Parser, ParsingContext, Refiner } from "./chrono";
 import { ParsingResult, ParsingComponents, ReferenceWithTimezone } from "./results";
 import { Component, ParsedComponents, ParsedResult, ParsingOption, ParsingReference, Meridiem, Weekday } from "./types";
+import { createMultiLocale, MultiLocaleChrono, MultiLocaleOption } from "./multilocale";
 
 export { en, Chrono, Parser, ParsingContext, Refiner, ParsingResult, ParsingComponents, ReferenceWithTimezone };
 export { Component, ParsedComponents, ParsedResult, ParsingOption, ParsingReference, Meridiem, Weekday };
+export { createMultiLocale, MultiLocaleChrono, MultiLocaleOption };
 
 // Export all locales
 import * as de from "./locales/de";

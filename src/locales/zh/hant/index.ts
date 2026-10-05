@@ -63,5 +63,6 @@ export function createConfiguration(): Configuration {
         (refiner) => !(refiner instanceof ExtractTimezoneOffsetRefiner)
     );
 
+    configuration.locale = "zh.hant";
     return configuration;
 }

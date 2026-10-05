@@ -71,5 +71,6 @@ export function createConfiguration(strictMode = true): Configuration {
         (refiner) => !(refiner instanceof MergeWeekdayComponentRefiner)
     );
 
+    configuration.locale = "ja";
     return configuration;
 }

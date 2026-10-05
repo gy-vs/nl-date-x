@@ -58,7 +58,7 @@ export function createCasualConfiguration(): Configuration {
  * @param strictMode If the timeunit mentioning should be strict, not casual
  */
 export function createConfiguration(strictMode: boolean): Configuration {
-    return includeCommonConfiguration(
+    const configuration = includeCommonConfiguration(
         {
             parsers: [
                 new ISOFormatParser(),
@@ -73,6 +73,8 @@ export function createConfiguration(strictMode: boolean): Configuration {
         },
         strictMode
     );
+    configuration.locale = "uk";
+    return configuration;
 }
 
 /**

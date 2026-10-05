@@ -11,6 +11,12 @@ import { toTimezoneOffset } from "./timezone";
 export interface Configuration {
     parsers: Parser[];
     refiners: Refiner[];
+
+    /**
+     * The locale name this configuration is for (e.g. `"en"`, `"de"`, `"zh.hant"`).
+     * When set, {@link Chrono.parse} tags each parsing result with `locale/<name>`.
+     */
+    locale?: string;
 }
 
 /**
@@ -49,12 +55,19 @@ export class Chrono {
     parsers: Array<Parser>;
     refiners: Array<Refiner>;
 
+    /**
+     * The locale name from the configuration this Chrono was created with (if any).
+     * Parsed results are tagged with `locale/<name>`.
+     */
+    locale?: string;
+
     defaultConfig = new ENDefaultConfiguration();
 
     constructor(configuration?: Configuration) {
         configuration = configuration || this.defaultConfig.createCasualConfiguration();
         this.parsers = [...configuration.parsers];
         this.refiners = [...configuration.refiners];
+        this.locale = configuration.locale;
     }
 
     /**
@@ -64,6 +77,7 @@ export class Chrono {
         return new Chrono({
             parsers: [...this.parsers],
             refiners: [...this.refiners],
+            locale: this.locale,
         });
     }
 
@@ -92,6 +106,11 @@ export class Chrono {
         this.refiners.forEach(function (refiner) {
             results = refiner.refine(context, results);
         });
+
+        if (this.locale) {
+            const localeTag = `locale/${this.locale}`;
+            results.forEach((result) => result.addTag(localeTag));
+        }
 
         return results;
     }
