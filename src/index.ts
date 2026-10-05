@@ -44,3 +44,5 @@ export function parse(text: string, ref?: ParsingReference | Date, option?: Pars
 export function parseDate(text: string, ref?: ParsingReference | Date, option?: ParsingOption): Date | null {
     return casual.parseDate(text, ref, option);
 }
+
+export { createMultiLocale, LocaleName, MultiLocaleOption, MultiLocaleChrono } from "./multiLocale";

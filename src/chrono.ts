@@ -11,6 +11,13 @@ import { toTimezoneOffset } from "./timezone";
 export interface Configuration {
     parsers: Parser[];
     refiners: Refiner[];
+    /**
+     * The locale (e.g. `en`, `de`, `zh.hans`) that results parsed with this
+     * configuration should be tagged with. When set, every parsed result
+     * carries a `locale/<locale>` tag (on the result itself and on
+     * `start`/`end`).
+     */
+    locale?: string;
 }
 
 /**
@@ -48,23 +55,29 @@ export interface Refiner {
 export class Chrono {
     parsers: Array<Parser>;
     refiners: Array<Refiner>;
+    locale?: string;
 
     defaultConfig = new ENDefaultConfiguration();
 
-    constructor(configuration?: Configuration) {
+    constructor(configuration?: Configuration, locale?: string) {
         configuration = configuration || this.defaultConfig.createCasualConfiguration();
         this.parsers = [...configuration.parsers];
         this.refiners = [...configuration.refiners];
+        this.locale = locale ?? configuration.locale;
     }
 
     /**
      * Create a shallow copy of the Chrono object with the same configuration (`parsers` and `refiners`)
      */
     clone(): Chrono {
-        return new Chrono({
-            parsers: [...this.parsers],
-            refiners: [...this.refiners],
-        });
+        return new Chrono(
+            {
+                parsers: [...this.parsers],
+                refiners: [...this.refiners],
+                locale: this.locale,
+            },
+            this.locale
+        );
     }
 
     /**
@@ -92,6 +105,10 @@ export class Chrono {
         this.refiners.forEach(function (refiner) {
             results = refiner.refine(context, results);
         });
+
+        if (this.locale) {
+            results.forEach((result) => result.addTag(`locale/${this.locale}`));
+        }
 
         return results;
     }

@@ -73,6 +73,7 @@ export function createCasualConfiguration(): Configuration {
 export function createConfiguration(strictMode = true): Configuration {
     return includeCommonConfiguration(
         {
+            locale: "ru",
             parsers: [
                 new SlashDateFormatParser(true),
                 new RUTimeUnitWithinFormatParser(),

@@ -60,6 +60,7 @@ export function createCasualConfiguration(): Configuration {
 export function createConfiguration(strictMode: boolean): Configuration {
     return includeCommonConfiguration(
         {
+            locale: "uk",
             parsers: [
                 new ISOFormatParser(),
                 new SlashDateFormatParser(true),

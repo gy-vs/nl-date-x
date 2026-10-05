@@ -47,6 +47,7 @@ export function createCasualConfiguration(): Configuration {
  */
 export function createConfiguration(): Configuration {
     const configuration = includeCommonConfiguration({
+        locale: "zh.hans",
         parsers: [
             new ZHHansDateParser(),
             new ZHHansRelationWeekdayParser(),

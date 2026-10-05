@@ -28,7 +28,7 @@ export const strict = new Chrono(configuration.createConfiguration(true, false))
 /**
  * Chrono object configured for parsing *UK-style* English
  */
-export const GB = new Chrono(configuration.createCasualConfiguration(true));
+export const GB = new Chrono(configuration.createCasualConfiguration(true), "en.GB");
 
 /**
  * A shortcut for en.casual.parse()

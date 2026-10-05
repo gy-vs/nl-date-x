@@ -51,6 +51,7 @@ export default class ENDefaultConfiguration {
     createConfiguration(strictMode = true, littleEndian = false): Configuration {
         const options = includeCommonConfiguration(
             {
+                locale: "en",
                 parsers: [
                     new SlashDateFormatParser(littleEndian),
                     new ENTimeUnitWithinFormatParser(strictMode),

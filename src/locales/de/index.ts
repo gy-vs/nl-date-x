@@ -41,6 +41,7 @@ export function createCasualConfiguration(littleEndian = true): Configuration {
 export function createConfiguration(strictMode = true, littleEndian = true): Configuration {
     return includeCommonConfiguration(
         {
+            locale: "de",
             parsers: [
                 new ISOFormatParser(),
                 new SlashDateFormatParser(littleEndian),

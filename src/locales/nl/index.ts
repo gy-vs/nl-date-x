@@ -58,6 +58,7 @@ export function createCasualConfiguration(littleEndian = true): Configuration {
 export function createConfiguration(strictMode = true, littleEndian = true): Configuration {
     return includeCommonConfiguration(
         {
+            locale: "nl",
             parsers: [
                 new SlashDateFormatParser(littleEndian),
                 new NLTimeUnitWithinFormatParser(),

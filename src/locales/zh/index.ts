@@ -50,6 +50,7 @@ export function createCasualConfiguration(): Configuration {
  */
 export function createConfiguration(): Configuration {
     const configuration = includeCommonConfiguration({
+        locale: "zh",
         parsers: [
             new ZHHantDateParser(),
             new ZHHansDateParser(),

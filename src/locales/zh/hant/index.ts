@@ -48,6 +48,7 @@ export function createCasualConfiguration(): Configuration {
  */
 export function createConfiguration(): Configuration {
     const configuration = includeCommonConfiguration({
+        locale: "zh.hant",
         parsers: [
             new ZHHantDateParser(),
             new ZHHantRelationWeekdayParser(),

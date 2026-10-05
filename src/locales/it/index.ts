@@ -80,6 +80,7 @@ export function createCasualConfiguration(littleEndian = false): Configuration {
 export function createConfiguration(strictMode = true, littleEndian = false): Configuration {
     return includeCommonConfiguration(
         {
+            locale: "it",
             parsers: [
                 new SlashDateFormatParser(littleEndian),
                 new ENTimeUnitWithinFormatParser(),

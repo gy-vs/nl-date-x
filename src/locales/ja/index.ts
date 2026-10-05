@@ -50,6 +50,7 @@ export function createCasualConfiguration(): Configuration {
 export function createConfiguration(strictMode = true): Configuration {
     const configuration = includeCommonConfiguration(
         {
+            locale: "ja",
             parsers: [
                 new JPStandardParser(),
                 new JPWeekdayParser(),
